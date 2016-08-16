@@ -5,6 +5,7 @@ Public Class AddSound
     Public ToolTipCtl As New ToolTip
 
     Private OFD As New OpenFileDialog
+    Private Categories As List(Of Category) = LoadCategories(Application.StartupPath + My.Settings.CategoriesXmlPath)
 
     Private Sub AddSound_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         AdminInterface.SoundMediaPlayer.Ctlcontrols.stop()
@@ -16,7 +17,7 @@ Public Class AddSound
             NameTextBox.Clear()
             PathTextBox.Clear()
             DurationTextBox.Clear()
-            CategoryComboBox.SelectedIndex = 0
+            CategoryComboBox.Refresh()
             PreviewListView.Clear()
 
             OFD.AddExtension = True
@@ -36,6 +37,10 @@ Public Class AddSound
                 If ctl.AccessibleDescription <> String.Empty Then
                     ToolTipCtl.SetToolTip(ctl, ctl.AccessibleDescription)
                 End If
+            Next
+
+            For Each cItem As Category In Categories
+                If CategoryComboBox.Items.Contains(cItem.Name) = False Then : CategoryComboBox.Items.Add(cItem.Name) : End If
             Next
 
             PreviewListView.Groups.Add(New ListViewGroup("Kategorie"))

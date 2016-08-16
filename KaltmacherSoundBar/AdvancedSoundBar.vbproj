@@ -298,7 +298,9 @@
   <ItemGroup>
     <Content Include="300-gerard-butler_multi-res.ico" />
     <None Include="Resources\inventory_category_binoculars.png" />
-    <Content Include="Categories.xml" />
+    <Content Include="Categories.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

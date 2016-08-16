@@ -117,28 +117,22 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property CategoriesXmlPath() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("\categories.xml")>  _
+        Public ReadOnly Property CategoriesXmlPath() As String
             Get
                 Return CType(Me("CategoriesXmlPath"),String)
             End Get
-            Set
-                Me("CategoriesXmlPath") = value
-            End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("AdvancedSoundBar")>  _
-        Public Property ApplicationName() As String
+        Public ReadOnly Property ApplicationName() As String
             Get
                 Return CType(Me("ApplicationName"),String)
             End Get
-            Set
-                Me("ApplicationName") = value
-            End Set
         End Property
     End Class
 End Namespace

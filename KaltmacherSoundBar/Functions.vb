@@ -60,156 +60,174 @@ Public Class Functions
     End Function
 
     Public Shared Sub CategoriesXMLWriter(ByVal XmlFile As String, ByVal CategoriesData As List(Of Category))
-        ' Auswahl einer Kodierungsart für die Zeichenablage
-        Dim enc As New System.Text.UnicodeEncoding
-        ' XmlTextWriter-Objekt für unsere Ausgabedatei erzeugen:
-        Dim XMLobj As XmlTextWriter = New XmlTextWriter(XmlFile, enc)
+        Try
+            ' Auswahl einer Kodierungsart für die Zeichenablage
+            Dim enc As New System.Text.UnicodeEncoding
+            ' XmlTextWriter-Objekt für unsere Ausgabedatei erzeugen:
+            Dim XMLobj As XmlTextWriter = New XmlTextWriter(XmlFile, enc)
 
-        With XMLobj
-            ' Formatierung: 4er-Einzüge verwenden
-            .Formatting = Formatting.Indented
-            .Indentation = 4
-            ' Dann fangen wir mal an:
-            .WriteStartDocument()
-            ' Beginn eines Elements "Personen". Darin werden wir mehrere
-            ' Elemente "Person" unterbringen.
-            .WriteStartElement("Categories")
-            ' Hier kommt das erste Element "Person". Eine Person hat
-            ' in unserem einfachen Beispiel einen Titel, einen Nach-
-            ' namen und einen Vornamen. Als Demo soll uns das genügen.
+            With XMLobj
+                ' Formatierung: 4er-Einzüge verwenden
+                .Formatting = Formatting.Indented
+                .Indentation = 4
+                ' Dann fangen wir mal an:
+                .WriteStartDocument()
+                ' Beginn eines Elements "Personen". Darin werden wir mehrere
+                ' Elemente "Person" unterbringen.
+                .WriteStartElement("Categories")
+                ' Hier kommt das erste Element "Person". Eine Person hat
+                ' in unserem einfachen Beispiel einen Titel, einen Nach-
+                ' namen und einen Vornamen. Als Demo soll uns das genügen.
 
-            For Each SoundItem In CategoriesData
-                .WriteStartElement("Category") ' <Category
-                .WriteAttributeString("Name", SoundItem.Name)
-                .WriteEndElement() ' Category />
-            Next
+                For Each SoundItem In CategoriesData
+                    .WriteStartElement("Category") ' <Category
+                    .WriteAttributeString("Name", SoundItem.Name)
+                    .WriteEndElement() ' Category />
+                Next
 
-            ' Nachdem das Element "Personen" zwei Elemente "Person"
-            ' erhalten hat, beenden wir die Ausgabe für "Personen"...
-            .WriteEndElement() ' </Personen>
-            ' ... und schließen das XML-Dokument (und die Datei)
-            .Close() ' Document
-        End With
+                ' Nachdem das Element "Personen" zwei Elemente "Person"
+                ' erhalten hat, beenden wir die Ausgabe für "Personen"...
+                .WriteEndElement() ' </Personen>
+                ' ... und schließen das XML-Dokument (und die Datei)
+                .Close() ' Document
+            End With
+        Catch ex As Exception
+            ThrowExceptionMessageBox(ex)
+        End Try
     End Sub
 
     Public Shared Function CategoriesXMLReader(ByVal XmlFile As String) As List(Of Category)
-        Dim Categories As New List(Of Category)
-        ' Wir benötigen einen XmlReader für das Auslesen der XML-Datei
-        Dim XMLRead As XmlReader = New XmlTextReader(XmlFile)
+        Try
+            Dim Categories As New List(Of Category)
+            ' Wir benötigen einen XmlReader für das Auslesen der XML-Datei
+            Dim XMLRead As XmlReader = New XmlTextReader(XmlFile)
 
-        ' Es folgt das Auslesen der XML-Datei
-        With XMLRead
-            Do While .Read ' Es sind noch Daten vorhanden
-                ' Welche Art von Daten liegt an?
-                Select Case .NodeType
-                    ' Ein Element
-                    Case XmlNodeType.Element
-                        Dim cName As String = String.Empty
+            ' Es folgt das Auslesen der XML-Datei
+            With XMLRead
+                Do While .Read ' Es sind noch Daten vorhanden
+                    ' Welche Art von Daten liegt an?
+                    Select Case .NodeType
+                        ' Ein Element
+                        Case XmlNodeType.Element
+                            Dim cName As String = String.Empty
 
-                        ' Alle Attribute (Name-Wert-Paare) abarbeiten
-                        If .AttributeCount > 0 Then
-                            ' Es sind noch weitere Attribute vorhanden
-                            While .MoveToNextAttribute ' nächstes
-                                Select Case .Name
-                                    Case "Name"
-                                        cName = .Value
-                                    Case Else
-                                End Select
-                            End While
+                            ' Alle Attribute (Name-Wert-Paare) abarbeiten
+                            If .AttributeCount > 0 Then
+                                ' Es sind noch weitere Attribute vorhanden
+                                While .MoveToNextAttribute ' nächstes
+                                    Select Case .Name
+                                        Case "Name"
+                                            cName = .Value
+                                        Case Else
+                                    End Select
+                                End While
 
-                            If cName <> String.Empty Then
-                                Categories.Add(New Category(cName))
+                                If cName <> String.Empty Then
+                                    Categories.Add(New Category(cName))
+                                End If
                             End If
-                        End If
-                End Select
-            Loop  ' Weiter nach Daten schauen
-            .Close()  ' XMLTextReader schließen
-        End With
+                    End Select
+                Loop  ' Weiter nach Daten schauen
+                .Close()  ' XMLTextReader schließen
+            End With
 
-        Return Categories
+            Return Categories
+        Catch ex As Exception
+            ThrowExceptionMessageBox(ex)
+            End
+        End Try
     End Function
 
     Public Shared Sub SoundsXMLWriter(ByVal XmlFile As String, ByVal SoundsData As List(Of Sound))
-        ' Auswahl einer Kodierungsart für die Zeichenablage
-        Dim enc As New System.Text.UnicodeEncoding
-        ' XmlTextWriter-Objekt für unsere Ausgabedatei erzeugen:
-        Dim XMLobj As XmlTextWriter = New XmlTextWriter(XmlFile, enc)
+        Try
+            ' Auswahl einer Kodierungsart für die Zeichenablage
+            Dim enc As New System.Text.UnicodeEncoding
+            ' XmlTextWriter-Objekt für unsere Ausgabedatei erzeugen:
+            Dim XMLobj As XmlTextWriter = New XmlTextWriter(XmlFile, enc)
 
-        With XMLobj
-            ' Formatierung: 4er-Einzüge verwenden
-            .Formatting = Formatting.Indented
-            .Indentation = 4
-            ' Dann fangen wir mal an:
-            .WriteStartDocument()
-            ' Beginn eines Elements "Personen". Darin werden wir mehrere
-            ' Elemente "Person" unterbringen.
-            .WriteStartElement("Sounds")
+            With XMLobj
+                ' Formatierung: 4er-Einzüge verwenden
+                .Formatting = Formatting.Indented
+                .Indentation = 4
+                ' Dann fangen wir mal an:
+                .WriteStartDocument()
+                ' Beginn eines Elements "Personen". Darin werden wir mehrere
+                ' Elemente "Person" unterbringen.
+                .WriteStartElement("Sounds")
 
-            ' Hier kommt das erste Element "Person". Eine Person hat
-            ' in unserem einfachen Beispiel einen Titel, einen Nach-
-            ' namen und einen Vornamen. Als Demo soll uns das genügen.
+                ' Hier kommt das erste Element "Person". Eine Person hat
+                ' in unserem einfachen Beispiel einen Titel, einen Nach-
+                ' namen und einen Vornamen. Als Demo soll uns das genügen.
 
-            For Each SoundItem In SoundsData
-                .WriteStartElement("Sound") ' <Sound
-                .WriteAttributeString("Name", SoundItem.Name)
-                .WriteAttributeString("Path", SoundItem.Path)
-                .WriteAttributeString("Duration", SoundItem.Duration)
-                .WriteAttributeString("Category", SoundItem.Category)
-                .WriteEndElement() ' Sound />
-            Next
+                For Each SoundItem In SoundsData
+                    .WriteStartElement("Sound") ' <Sound
+                    .WriteAttributeString("Name", SoundItem.Name)
+                    .WriteAttributeString("Path", SoundItem.Path)
+                    .WriteAttributeString("Duration", SoundItem.Duration)
+                    .WriteAttributeString("Category", SoundItem.Category)
+                    .WriteEndElement() ' Sound />
+                Next
 
-            ' Nachdem das Element "Personen" zwei Elemente "Person"
-            ' erhalten hat, beenden wir die Ausgabe für "Personen"...
-            .WriteEndElement() ' </Personen>
-            ' ... und schließen das XML-Dokument (und die Datei)
-            .Close() ' Document
-        End With
+                ' Nachdem das Element "Personen" zwei Elemente "Person"
+                ' erhalten hat, beenden wir die Ausgabe für "Personen"...
+                .WriteEndElement() ' </Personen>
+                ' ... und schließen das XML-Dokument (und die Datei)
+                .Close() ' Document
+            End With
+        Catch ex As Exception
+            ThrowExceptionMessageBox(ex)
+        End Try
     End Sub
 
     Public Shared Function SoundsXMLReader(ByVal XmlFile As String) As List(Of Sound)
-        Dim Sounds As New List(Of Sound)
-        ' Wir benötigen einen XmlReader für das Auslesen der XML-Datei
-        Dim XMLRead As XmlReader = New XmlTextReader(XmlFile)
+        Try
+            Dim Sounds As New List(Of Sound)
+            ' Wir benötigen einen XmlReader für das Auslesen der XML-Datei
+            Dim XMLRead As XmlReader = New XmlTextReader(XmlFile)
 
-        ' Es folgt das Auslesen der XML-Datei
-        With XMLRead
-            Do While .Read ' Es sind noch Daten vorhanden
-                ' Welche Art von Daten liegt an?
-                Select Case .NodeType
-                    ' Ein Element
-                    Case XmlNodeType.Element
-                        Dim sName As String = String.Empty
-                        Dim sPath As String = String.Empty
-                        Dim sDuration As String = String.Empty
-                        Dim sGroup As String = String.Empty
+            ' Es folgt das Auslesen der XML-Datei
+            With XMLRead
+                Do While .Read ' Es sind noch Daten vorhanden
+                    ' Welche Art von Daten liegt an?
+                    Select Case .NodeType
+                        ' Ein Element
+                        Case XmlNodeType.Element
+                            Dim sName As String = String.Empty
+                            Dim sPath As String = String.Empty
+                            Dim sDuration As String = String.Empty
+                            Dim sGroup As String = String.Empty
 
-                        ' Alle Attribute (Name-Wert-Paare) abarbeiten
-                        If .AttributeCount > 0 Then
-                            ' Es sind noch weitere Attribute vorhanden
-                            While .MoveToNextAttribute ' nächstes
-                                Select Case .Name
-                                    Case "Name"
-                                        sName = .Value
-                                    Case "Path"
-                                        sPath = .Value
-                                    Case "Duration"
-                                        sDuration = .Value
-                                    Case "Group"
-                                        sGroup = .Value
-                                    Case Else
-                                End Select
-                            End While
+                            ' Alle Attribute (Name-Wert-Paare) abarbeiten
+                            If .AttributeCount > 0 Then
+                                ' Es sind noch weitere Attribute vorhanden
+                                While .MoveToNextAttribute ' nächstes
+                                    Select Case .Name
+                                        Case "Name"
+                                            sName = .Value
+                                        Case "Path"
+                                            sPath = .Value
+                                        Case "Duration"
+                                            sDuration = .Value
+                                        Case "Group"
+                                            sGroup = .Value
+                                        Case Else
+                                    End Select
+                                End While
 
-                            If sName <> String.Empty And sPath <> String.Empty Then
-                                Sounds.Add(New Sound(sName, sPath, sDuration, sGroup))
+                                If sName <> String.Empty And sPath <> String.Empty Then
+                                    Sounds.Add(New Sound(sName, sPath, sDuration, sGroup))
+                                End If
                             End If
-                        End If
-                End Select
-            Loop  ' Weiter nach Daten schauen
-            .Close()  ' XMLTextReader schließen
-        End With
+                    End Select
+                Loop  ' Weiter nach Daten schauen
+                .Close()  ' XMLTextReader schließen
+            End With
 
-        Return Sounds
+            Return Sounds
+        Catch ex As Exception
+            ThrowExceptionMessageBox(ex)
+            End
+        End Try
     End Function
 
     Public Shared Sub ThrowExceptionMessageBox(ByVal ex As Exception, Optional ByVal UserFriendlyMessage As String = "Es ist ein Kritischer Fehler aufgetreten, bitte melden Sie dies dem Autor dieser Anwendung!", Optional ByVal Caption As String = "Kritischer Fehler")

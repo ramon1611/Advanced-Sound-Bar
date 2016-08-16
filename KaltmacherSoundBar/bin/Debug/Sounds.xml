@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Sounds xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Sound Name="Funny Blue" Path="\funnyblue.mp3" Duration="00:00" Group="Blue" />
+<Sounds>
+  <Sound Name="Funny Blue" Path="\funnyblue.mp3" Duration="00:00" Category="Standard" />
 </Sounds>

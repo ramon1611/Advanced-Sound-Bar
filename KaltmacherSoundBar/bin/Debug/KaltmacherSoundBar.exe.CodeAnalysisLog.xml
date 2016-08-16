@@ -1,6 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="k:\software\program files (x86)\microsoft visual studio 10.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="10.0">
+ <Targets>
+  <Target Name="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\bin\Debug\Advanced Sound Bar.exe">
+   <Modules>
+    <Module Name="advanced sound bar.exe">
+     <Namespaces>
+      <Namespace Name="AdvancedSoundBar">
+       <Types>
+        <Type Name="AdminInterface" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="AdminInterface.Designer.vb" Line="25">"'AdminInterface.InitializeComponent()'" ruft "'AxHost.Enabled.Set(Boolean)'" auf, das ein LinkDemand aufweist. Bei diesem Aufruf wird "'AxHost.Enabled.Set(Boolean)'" indirekt für Benutzercode verfügbar gemacht. Überprüfen Sie folgende Aufrufliste, die möglicherweise eine Möglichkeit zum Umgehen der Sicherheit verfügbar macht: &#xD;&#xA;   -&gt;'AdminInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'AdminInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'AdminInterface.New()'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="AdminInterface.Designer.vb" Line="25">"'AdminInterface.InitializeComponent()'" ruft "'AxHost.OcxState.Set(AxHost.State)'" auf, das ein LinkDemand aufweist. Bei diesem Aufruf wird "'AxHost.OcxState.Set(AxHost.State)'" indirekt für Benutzercode verfügbar gemacht. Überprüfen Sie folgende Aufrufliste, die möglicherweise eine Möglichkeit zum Umgehen der Sicherheit verfügbar macht: &#xD;&#xA;   -&gt;'AdminInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'AdminInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'AdminInterface.New()'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Functions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CategoriesXMLReader(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="Functions.vb" Line="103">Rufen Sie in der 'Functions.CategoriesXMLReader(String)'-Methode System.IDisposable.Dispose für das Objekt "'XMLRead'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CategoriesXMLWriter(System.String,System.Collections.Generic.List`1&lt;AdvancedSoundBar.Functions+Category&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="Functions.vb" Line="67">Rufen Sie in der 'Functions.CategoriesXMLWriter(String, List(Of Functions.Category))'-Methode System.IDisposable.Dispose für das Objekt "'XMLobj'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#MD5StringHash(System.String,AdvancedSoundBar.Functions+LetterCase)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="Functions.vb" Line="273">Rufen Sie in der 'Functions.MD5StringHash(String, Functions.LetterCase)'-Methode System.IDisposable.Dispose für das Objekt "'MD5'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SoundsXMLReader(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="Functions.vb" Line="186">Rufen Sie in der 'Functions.SoundsXMLReader(String)'-Methode System.IDisposable.Dispose für das Objekt "'XMLRead'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SoundsXMLWriter(System.String,System.Collections.Generic.List`1&lt;AdvancedSoundBar.Functions+Sound&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="Functions.vb" Line="146">Rufen Sie in der 'Functions.SoundsXMLWriter(String, List(Of Functions.Sound))'-Methode System.IDisposable.Dispose für das Objekt "'XMLobj'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UserInterface" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-08-16 21:28:36Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="UserInterface.Designer.vb" Line="25">"'UserInterface.InitializeComponent()'" ruft "'AxHost.Enabled.Set(Boolean)'" auf, das ein LinkDemand aufweist. Bei diesem Aufruf wird "'AxHost.Enabled.Set(Boolean)'" indirekt für Benutzercode verfügbar gemacht. Überprüfen Sie folgende Aufrufliste, die möglicherweise eine Möglichkeit zum Umgehen der Sicherheit verfügbar macht: &#xD;&#xA;   -&gt;'UserInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'UserInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'UserInterface.New()'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar" File="UserInterface.Designer.vb" Line="25">"'UserInterface.InitializeComponent()'" ruft "'AxHost.OcxState.Set(AxHost.State)'" auf, das ein LinkDemand aufweist. Bei diesem Aufruf wird "'AxHost.OcxState.Set(AxHost.State)'" indirekt für Benutzercode verfügbar gemacht. Überprüfen Sie folgende Aufrufliste, die möglicherweise eine Möglichkeit zum Umgehen der Sicherheit verfügbar macht: &#xD;&#xA;   -&gt;'UserInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'UserInterface.InitializeComponent()'&#xD;&#xA;   -&gt;'UserInterface.New()'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+   <Name>Methoden mit Linkaufrufen nicht indirekt verfügbar machen</Name>
+   <Description>Umschließen Sie eine Methode, die durch eine LinkDemand geschützt ist, nicht mit einer Methode, die keine Sicherheitsüberprüfung durchführt. LinkDemand überprüft die Berechtigungen des unmittelbaren Aufrufers, anstelle die Berechtigungen aller Aufrufer in der Aufrufliste zu überprüfen. In diesem Fall werden die Berechtigungen der Wrappermethode überprüft. Wenn die Wrappermethode die Berechtigungen von Aufrufern weiter oben in der Aufrufliste nicht überprüft, kann in bösartiger Absicht erstellter Code möglicherweise die umschlossene Funktion ausführen, obwohl er dazu nicht berechtigt ist.</Description>
+   <Resolution Name="Default">"{0}" ruft "{1}" auf, das ein LinkDemand aufweist. Bei diesem Aufruf wird "{1}" indirekt für Benutzercode verfügbar gemacht. Überprüfen Sie folgende Aufrufliste, die möglicherweise eine Möglichkeit zum Umgehen der Sicherheit verfügbar macht: {2}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182303(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="10.0.0.0" />
+  </Rule>
+  <Rule TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>Objekte verwerfen, bevor Bereich verloren geht</Name>
+   <Description>Wenn ein verwerfbares Objekt nicht explizit verworfen wird, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen, wird das Objekt zu einer unbestimmten Zeit verworfen, wenn der Garbage Collector den Finalizer des Objekts ausführt. Da möglicherweise ein Ausnahmeereignis auftritt, durch das die Ausführung des Finalizers des Objekts verhindert wird, muss das Objekt stattdessen explizit verworfen werden.</Description>
+   <Resolution Name="NonExceptionEdge">Rufen Sie in der {0}-Methode System.IDisposable.Dispose für das Objekt "{1}" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182289(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="10.0.0.0" />
+  </Rule>
+ </Rules>
  <Localized>
   <String Key="Category">Kategorie</String>
   <String Key="Certainty">Sicherheit</String>

@@ -4,7 +4,7 @@ Public Class AdminInterface
     Public StatusObj As ToolStripStatusLabel = StatusToolStripLabel
     Public ToolTipCtl As New ToolTip
     Public Sounds As List(Of Sound) = LoadSounds(Application.StartupPath + My.Settings.SoundsXmlPath)
-    Public Categories As List(Of Category)
+    Public Categories As List(Of Category) = LoadCategories(Application.StartupPath + My.Settings.CategoriesXmlPath)
 
     Private Sub AdminInterface_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -28,12 +28,20 @@ Public Class AdminInterface
 
             SubmitStatus(Me, StatusToolStripLabel)
 
+            For Each cItem As Category In Categories
+                SoundsListView.Groups.Add(New ListViewGroup(cItem.Name))
+            Next
+
             For Each sound As Sound In Sounds
-                With SoundsListView.Items.Add(sound.Name)
+                Dim newListViewItem As New ListViewItem
+                With newListViewItem
+                    .Text = sound.Name
+                    .Group = New ListViewGroup(sound.Category)
                     .SubItems.Add(sound.Path)
                     .SubItems.Add(sound.Duration)
-                    .SubItems.Add(sound.Category)
                 End With
+
+                SoundsListView.Items.Add(newListViewItem)
             Next
         Catch ex As Exception
             ThrowExceptionMessageBox(ex)
@@ -104,6 +112,12 @@ Public Class AdminInterface
     End Sub
 
     Private Sub ViewCategoriesButton_Click(sender As System.Object, e As System.EventArgs) Handles ViewCategoriesButton.Click
+        Dim categoriesMessage As String = "Anzahl Vorhandener Kategorien: " + Categories.Count.ToString
 
+        For Each cItem As Category In Categories
+            categoriesMessage = categoriesMessage + vbNewLine + "- " + cItem.Name
+        Next
+
+        MessageBox.Show(categoriesMessage, "Kategorien", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

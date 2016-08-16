@@ -29,21 +29,20 @@ Partial Class AddSound
         Me.PathTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DurationTextBox = New System.Windows.Forms.TextBox()
-        Me.BrowsePathButton = New System.Windows.Forms.Button()
         Me.AddCategoryButton = New System.Windows.Forms.Button()
+        Me.DurationTextBox = New System.Windows.Forms.TextBox()
         Me.CategoryComboBox = New System.Windows.Forms.ComboBox()
+        Me.BrowsePathButton = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ApplyButton = New System.Windows.Forms.Button()
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PreviewListView = New System.Windows.Forms.ListView()
+        Me.NameColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.DurationColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SoundPreviewButton = New System.Windows.Forms.Button()
         Me.PausePreviewButton = New System.Windows.Forms.Button()
-        Me.PreviewListView = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
@@ -110,6 +109,15 @@ Partial Class AddSound
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Allgemeines"
         '
+        'AddCategoryButton
+        '
+        Me.AddCategoryButton.Location = New System.Drawing.Point(433, 96)
+        Me.AddCategoryButton.Name = "AddCategoryButton"
+        Me.AddCategoryButton.Size = New System.Drawing.Size(24, 21)
+        Me.AddCategoryButton.TabIndex = 5
+        Me.AddCategoryButton.Text = "+"
+        Me.AddCategoryButton.UseVisualStyleBackColor = True
+        '
         'DurationTextBox
         '
         Me.DurationTextBox.AccessibleDescription = "Dauer des Sounds"
@@ -117,6 +125,16 @@ Partial Class AddSound
         Me.DurationTextBox.Name = "DurationTextBox"
         Me.DurationTextBox.Size = New System.Drawing.Size(351, 20)
         Me.DurationTextBox.TabIndex = 5
+        '
+        'CategoryComboBox
+        '
+        Me.CategoryComboBox.AccessibleDescription = "Kategorie des Sounds"
+        Me.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CategoryComboBox.FormattingEnabled = True
+        Me.CategoryComboBox.Location = New System.Drawing.Point(76, 97)
+        Me.CategoryComboBox.Name = "CategoryComboBox"
+        Me.CategoryComboBox.Size = New System.Drawing.Size(351, 21)
+        Me.CategoryComboBox.TabIndex = 1
         '
         'BrowsePathButton
         '
@@ -127,26 +145,6 @@ Partial Class AddSound
         Me.BrowsePathButton.TabIndex = 4
         Me.BrowsePathButton.Text = "..."
         Me.BrowsePathButton.UseVisualStyleBackColor = True
-        '
-        'AddCategoryButton
-        '
-        Me.AddCategoryButton.Location = New System.Drawing.Point(433, 96)
-        Me.AddCategoryButton.Name = "AddCategoryButton"
-        Me.AddCategoryButton.Size = New System.Drawing.Size(24, 21)
-        Me.AddCategoryButton.TabIndex = 5
-        Me.AddCategoryButton.Text = "+"
-        Me.AddCategoryButton.UseVisualStyleBackColor = True
-        '
-        'CategoryComboBox
-        '
-        Me.CategoryComboBox.AccessibleDescription = "Kategorie des Sounds"
-        Me.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CategoryComboBox.FormattingEnabled = True
-        Me.CategoryComboBox.Items.AddRange(New Object() {"Testkategorie 1", "Testkategorie 2", "Günther", "Olaf"})
-        Me.CategoryComboBox.Location = New System.Drawing.Point(76, 97)
-        Me.CategoryComboBox.Name = "CategoryComboBox"
-        Me.CategoryComboBox.Size = New System.Drawing.Size(351, 21)
-        Me.CategoryComboBox.TabIndex = 1
         '
         'Label4
         '
@@ -188,6 +186,32 @@ Partial Class AddSound
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Vorschau"
         '
+        'PreviewListView
+        '
+        Me.PreviewListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.NameColumn, Me.DurationColumn, Me.PathColumn})
+        Me.PreviewListView.FullRowSelect = True
+        Me.PreviewListView.Location = New System.Drawing.Point(6, 19)
+        Me.PreviewListView.Name = "PreviewListView"
+        Me.PreviewListView.Size = New System.Drawing.Size(451, 75)
+        Me.PreviewListView.TabIndex = 14
+        Me.PreviewListView.UseCompatibleStateImageBehavior = False
+        Me.PreviewListView.View = System.Windows.Forms.View.Details
+        '
+        'NameColumn
+        '
+        Me.NameColumn.Text = "Name"
+        Me.NameColumn.Width = 120
+        '
+        'PathColumn
+        '
+        Me.PathColumn.Text = "Path"
+        Me.PathColumn.Width = 275
+        '
+        'DurationColumn
+        '
+        Me.DurationColumn.Text = "Duration"
+        Me.DurationColumn.Width = 52
+        '
         'SoundPreviewButton
         '
         Me.SoundPreviewButton.AccessibleDescription = "Sound vorhören"
@@ -208,37 +232,6 @@ Partial Class AddSound
         Me.PausePreviewButton.Text = "Pause"
         Me.PausePreviewButton.UseVisualStyleBackColor = True
         Me.PausePreviewButton.Visible = False
-        '
-        'PreviewListView
-        '
-        Me.PreviewListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.PreviewListView.FullRowSelect = True
-        Me.PreviewListView.Location = New System.Drawing.Point(6, 19)
-        Me.PreviewListView.Name = "PreviewListView"
-        Me.PreviewListView.Size = New System.Drawing.Size(451, 75)
-        Me.PreviewListView.TabIndex = 14
-        Me.PreviewListView.UseCompatibleStateImageBehavior = False
-        Me.PreviewListView.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Name"
-        Me.ColumnHeader1.Width = 80
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Path"
-        Me.ColumnHeader2.Width = 174
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Duration"
-        Me.ColumnHeader3.Width = 52
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Group"
-        Me.ColumnHeader4.Width = 100
         '
         'AddSound
         '
@@ -283,8 +276,7 @@ Partial Class AddSound
     Friend WithEvents PausePreviewButton As System.Windows.Forms.Button
     Friend WithEvents AddCategoryButton As System.Windows.Forms.Button
     Friend WithEvents PreviewListView As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents NameColumn As System.Windows.Forms.ColumnHeader
+    Friend WithEvents PathColumn As System.Windows.Forms.ColumnHeader
+    Friend WithEvents DurationColumn As System.Windows.Forms.ColumnHeader
 End Class

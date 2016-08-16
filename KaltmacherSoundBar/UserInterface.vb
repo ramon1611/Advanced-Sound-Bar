@@ -7,6 +7,7 @@ Public Class UserInterface
     Public intInputBoxCancel As Integer = StrPtr(String.Empty)
     Public ToolTipCtl As New ToolTip
     Public Sounds As List(Of Sound) = LoadSounds(Application.StartupPath + My.Settings.SoundsXmlPath)
+    Public Categories As List(Of Category) = LoadCategories(Application.StartupPath + My.Settings.CategoriesXmlPath)
 
     '' <?34573r_366
     Public e66 As Boolean = False
@@ -41,12 +42,21 @@ Public Class UserInterface
             ToolTipCtl.ReshowDelay = 500
             ToolTipCtl.ShowAlways = True
 
+            For Each cItem As Category In Categories
+                SoundsListView.Groups.Add(New ListViewGroup(cItem.Name))
+            Next
+
             For Each sound As Sound In Sounds
-                With SoundsListView.Items.Add(sound.Name)
+                Dim newListViewItem As New ListViewItem
+
+                With newListViewItem
+                    .Text = sound.Name
+                    .Group = New ListViewGroup(sound.Category)
                     .SubItems.Add(sound.Path)
                     .SubItems.Add(sound.Duration)
-                    .SubItems.Add(sound.Category)
                 End With
+
+                SoundsListView.Items.Add(newListViewItem)
             Next
 
             Dim ctl As Control
