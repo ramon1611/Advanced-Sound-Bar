@@ -14,11 +14,9 @@ Public Class AddSound
 
     Private Sub AddSound_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            NameTextBox.Clear()
-            PathTextBox.Clear()
-            DurationTextBox.Clear()
-            CategoryComboBox.Refresh()
-            PreviewListView.Clear()
+            NameTextBox.Text = "Neuer Sound"
+            PathTextBox.Text = "C:\..."
+            DurationTextBox.Text = "00:00"
 
             OFD.AddExtension = True
             OFD.CheckFileExists = True
@@ -40,11 +38,15 @@ Public Class AddSound
             Next
 
             For Each cItem As Category In Categories
-                If CategoryComboBox.Items.Contains(cItem.Name) = False Then : CategoryComboBox.Items.Add(cItem.Name) : End If
-            Next
+                If CategoryComboBox.Items.Contains(cItem.Name) = False Then
+                    CategoryComboBox.Items.Add(cItem.Name)
 
-            PreviewListView.Groups.Add(New ListViewGroup("Kategorie"))
-            PreviewListView.Items.Add("Neuer Sound").Group = PreviewListView.Groups(0)
+                    If cItem.IsDefault = True Then
+                        Dim index As Integer = CategoryComboBox.FindString(cItem.Name)
+                        CategoryComboBox.SelectedIndex = index
+                    End If
+                End If
+            Next
         Catch ex As Exception
             ThrowExceptionMessageBox(ex)
         End Try
@@ -56,11 +58,43 @@ Public Class AddSound
     End Sub
 
     Private Sub ApplyButton_Click(sender As System.Object, e As System.EventArgs) Handles ApplyButton.Click
+        Dim fName As String = Split(PathTextBox.Text, "\").Last.ToLower
+        Dim ReplaceFName As New Dictionary(Of String, String)
 
+        With ReplaceFName
+            .Add(" - ", "_")
+            .Add(", ", "_")
+            .Add(") (", "_")
+            .Add(").", ".")
+            .Add("(", "_")
+            .Add(")", "_")
+            .Add("] [", "_")
+            .Add("].", ".")
+            .Add("[", "_")
+            .Add("]", "_")
+            .Add(",", "_")
+            .Add("'", "")
+            .Add(" & ", "+")
+            .Add("&", "+")
+            .Add(" ", "-")
+            .Add("#", "")
+        End With
+
+        For Each rplce As String In ReplaceFName.Keys
+            fName = Replace(fName, rplce, ReplaceFName(rplce))
+        Next
+
+        ImportSound.oldFile = PathTextBox.Text
+        ImportSound.newFile = Application.StartupPath + My.Settings.SoundsPath + "\" + fName
+        ImportSound.ShowDialog()
+
+        If ImportSound.iStatus = ImportSound.ImportStatus.Success Or ImportSound.iStatus = ImportSound.ImportStatus.SuccessWithFailure Then
+            Me.Close()
+        End If
     End Sub
 
     Private Sub CloseButton_Click(sender As System.Object, e As System.EventArgs) Handles CloseButton.Click
-
+        Me.Close()
     End Sub
 
     Private Sub BrowsePathButton_Click(sender As System.Object, e As System.EventArgs) Handles BrowsePathButton.Click
@@ -73,17 +107,28 @@ Public Class AddSound
     End Sub
 
     Private Sub PausePreviewButton_Click(sender As System.Object, e As System.EventArgs) Handles PausePreviewButton.Click
-        AdminInterface.SoundMediaPlayer.Ctlcontrols.pause()
+        AdminInterface.SoundMediaPlayer.Ctlcontrols.stop()
         PausePreviewButton.Hide()
     End Sub
 
     Private Sub PathTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles PathTextBox.TextChanged
-        AdminInterface.SoundMediaPlayer.URL = PathTextBox.Text
-        AdminInterface.SoundMediaPlayer.Ctlcontrols.stop()
+        If My.Computer.FileSystem.FileExists(PathTextBox.Text) Then
+            SoundPreviewButton.Enabled = True
+            AdminInterface.SoundMediaPlayer.URL = PathTextBox.Text
+            AdminInterface.SoundMediaPlayer.Ctlcontrols.stop()
+        Else
+            SoundPreviewButton.Enabled = False
+        End If
+
+        If PathTextBox.Text <> String.Empty And PathTextBox.Text <> "C:\..." Then
+            PreviewListView.Items(0).SubItems(2).Text = PathTextBox.Text
+        Else
+            PreviewListView.Items(0).SubItems(2).Text = "C:\..."
+        End If
     End Sub
 
     Private Sub NameTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles NameTextBox.TextChanged
-        If NameTextBox.Text <> String.Empty Then
+        If NameTextBox.Text <> String.Empty And NameTextBox.Text <> "Neuer Sound" Then
             PreviewListView.Items(0).Text = NameTextBox.Text
         Else
             PreviewListView.Items(0).Text = "Neuer Sound"
@@ -95,6 +140,14 @@ Public Class AddSound
             PreviewListView.Groups(0).Header = CategoryComboBox.Text
         Else
             PreviewListView.Groups(0).Header = "Kategorie"
+        End If
+    End Sub
+
+    Private Sub DurationTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles DurationTextBox.TextChanged
+        If DurationTextBox.Text <> String.Empty And DurationTextBox.Text <> "00:00" Then
+            PreviewListView.Items(0).SubItems(1).Text = DurationTextBox.Text
+        Else
+            PreviewListView.Items(0).SubItems(1).Text = "00:00"
         End If
     End Sub
 End Class

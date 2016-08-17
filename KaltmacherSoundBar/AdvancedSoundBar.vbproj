@@ -208,6 +208,12 @@
     </Compile>
     <Compile Include="Functions.vb" />
     <Compile Include="GlobalSuppressions.vb" />
+    <Compile Include="ImportSound.Designer.vb">
+      <DependentUpon>ImportSound.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportSound.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigureSound.resx">
       <DependentUpon>ConfigureSound.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportSound.resx">
+      <DependentUpon>ImportSound.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -300,6 +309,7 @@
     <None Include="Resources\inventory_category_binoculars.png" />
     <Content Include="Categories.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Sounds.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

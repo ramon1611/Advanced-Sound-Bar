@@ -22,6 +22,8 @@ Partial Class AddSound
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Kategorie", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"Neuer Sound", "00:00", "C:\..."}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddSound))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NameTextBox = New System.Windows.Forms.TextBox()
@@ -39,8 +41,8 @@ Partial Class AddSound
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.PreviewListView = New System.Windows.Forms.ListView()
         Me.NameColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.DurationColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SoundPreviewButton = New System.Windows.Forms.Button()
         Me.PausePreviewButton = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -190,8 +192,15 @@ Partial Class AddSound
         '
         Me.PreviewListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.NameColumn, Me.DurationColumn, Me.PathColumn})
         Me.PreviewListView.FullRowSelect = True
+        ListViewGroup1.Header = "Kategorie"
+        ListViewGroup1.Name = "PreviewGroup"
+        Me.PreviewListView.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1})
+        ListViewItem1.Group = ListViewGroup1
+        Me.PreviewListView.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.PreviewListView.Location = New System.Drawing.Point(6, 19)
+        Me.PreviewListView.MultiSelect = False
         Me.PreviewListView.Name = "PreviewListView"
+        Me.PreviewListView.Scrollable = False
         Me.PreviewListView.Size = New System.Drawing.Size(451, 75)
         Me.PreviewListView.TabIndex = 14
         Me.PreviewListView.UseCompatibleStateImageBehavior = False
@@ -202,19 +211,20 @@ Partial Class AddSound
         Me.NameColumn.Text = "Name"
         Me.NameColumn.Width = 120
         '
-        'PathColumn
-        '
-        Me.PathColumn.Text = "Path"
-        Me.PathColumn.Width = 275
-        '
         'DurationColumn
         '
         Me.DurationColumn.Text = "Duration"
         Me.DurationColumn.Width = 52
         '
+        'PathColumn
+        '
+        Me.PathColumn.Text = "Path"
+        Me.PathColumn.Width = 275
+        '
         'SoundPreviewButton
         '
         Me.SoundPreviewButton.AccessibleDescription = "Sound vorhören"
+        Me.SoundPreviewButton.Enabled = False
         Me.SoundPreviewButton.Location = New System.Drawing.Point(12, 256)
         Me.SoundPreviewButton.Name = "SoundPreviewButton"
         Me.SoundPreviewButton.Size = New System.Drawing.Size(75, 23)

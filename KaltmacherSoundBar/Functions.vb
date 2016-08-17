@@ -39,17 +39,13 @@ Public Class Functions
 
     Public Structure Category
         Public Name As String
+        Public IsDefault As Boolean
 
-        Public Sub New(ByVal n As String)
+        Public Sub New(ByVal n As String, Optional d As Boolean = False)
             Name = n
+            IsDefault = d
         End Sub
     End Structure
-
-    Public Shared Function ImportSound(ByVal Name As String, ByVal Path As String, ByVal Duration As String, ByVal Group As String) As Boolean
-
-        Return False
-    End Function
-
 
     Public Shared Function LoadSounds(ByVal XmlFile As String) As List(Of Sound)
         Return SoundsXMLReader(XmlFile)
@@ -79,9 +75,11 @@ Public Class Functions
                 ' in unserem einfachen Beispiel einen Titel, einen Nach-
                 ' namen und einen Vornamen. Als Demo soll uns das genügen.
 
+                Dim defaultIsSet As Boolean = False
                 For Each SoundItem In CategoriesData
                     .WriteStartElement("Category") ' <Category
                     .WriteAttributeString("Name", SoundItem.Name)
+                    If SoundItem.IsDefault = True And defaultIsSet = False Then : .WriteAttributeString("Default", SoundItem.IsDefault.ToString) : defaultIsSet = True : End If
                     .WriteEndElement() ' Category />
                 Next
 
@@ -104,12 +102,14 @@ Public Class Functions
 
             ' Es folgt das Auslesen der XML-Datei
             With XMLRead
+                Dim defaultIsSet As Boolean = False
                 Do While .Read ' Es sind noch Daten vorhanden
                     ' Welche Art von Daten liegt an?
                     Select Case .NodeType
                         ' Ein Element
                         Case XmlNodeType.Element
                             Dim cName As String = String.Empty
+                            Dim cDefault As Boolean = False
 
                             ' Alle Attribute (Name-Wert-Paare) abarbeiten
                             If .AttributeCount > 0 Then
@@ -118,12 +118,14 @@ Public Class Functions
                                     Select Case .Name
                                         Case "Name"
                                             cName = .Value
+                                        Case "Default"
+                                            If defaultIsSet = False Then : cDefault = CBool(.Value) : defaultIsSet = True : End If
                                         Case Else
                                     End Select
                                 End While
 
                                 If cName <> String.Empty Then
-                                    Categories.Add(New Category(cName))
+                                    Categories.Add(New Category(cName, cDefault))
                                 End If
                             End If
                     End Select
