@@ -55,7 +55,7 @@ Partial Class ImportSound
         Me.ImportStatusLabel.Text = "$oldFile -> $newFile"
         Me.ImportStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'ImportSoundvb
+        'ImportSound
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -68,7 +68,7 @@ Partial Class ImportSound
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "ImportSoundvb"
+        Me.Name = "ImportSound"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Sound importieren ..."
         Me.ResumeLayout(False)
