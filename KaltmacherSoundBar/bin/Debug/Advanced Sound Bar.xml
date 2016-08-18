@@ -43,6 +43,10 @@ AdvancedSoundBar
 	<summary>
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
 </summary>
+</member><member name="P:AdvancedSoundBar.My.Resources.Resources.inventory_category_gear">
+	<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
 </member><member name="P:AdvancedSoundBar.My.Resources.Resources.inventory_category_pencil">
 	<summary>
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.

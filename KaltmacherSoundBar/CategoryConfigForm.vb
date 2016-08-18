@@ -1,29 +1,23 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class CategoryConfigForm
-    Public ActionMode As Mode = Mode.Add
+    Public ActionMode As CategoryConfigMode = CategoryConfigMode.Add
     Public SelectedCategoryIndex As Integer = 0
-
-    Public Enum Mode As Integer
-        Add = 0
-        Modify = 1
-        ModifyDefault = 2
-    End Enum
 
     Private Sub CategoryForm_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Try
             Select Case ActionMode
-                Case Mode.Add
+                Case CategoryConfigMode.Add
                     NameTextBox.Clear()
                     SetDefaultCheckBox.Checked = False
                     SetDefaultCheckBox.Text = "Setze Kategorie als Standard"
                     SetDefaultCheckBox.Enabled = Not CategoriesDefaultIsSet
-                Case Mode.Modify
+                Case CategoryConfigMode.Modify
                     NameTextBox.Text = Categories(SelectedCategoryIndex).Name
                     SetDefaultCheckBox.Checked = Categories(SelectedCategoryIndex).IsDefault
                     SetDefaultCheckBox.Text = "Setze Kategorie als Standard"
                     SetDefaultCheckBox.Enabled = Not CategoriesDefaultIsSet
-                Case Mode.ModifyDefault
+                Case CategoryConfigMode.ModifyDefault
                     NameTextBox.Text = Categories(SelectedCategoryIndex).Name
                     SetDefaultCheckBox.Checked = False
                     SetDefaultCheckBox.Text = "Kategorie als Standard entfernen"
@@ -46,11 +40,11 @@ Public Class CategoryConfigForm
     Private Sub SaveButton_Click(sender As System.Object, e As System.EventArgs) Handles SaveButton.Click
         Try
             Select Case ActionMode
-                Case Mode.Add
+                Case CategoryConfigMode.Add
                     Categories.Add(New Category(NameTextBox.Text, SetDefaultCheckBox.Checked))
-                Case Mode.Modify
+                Case CategoryConfigMode.Modify
                     Categories(SelectedCategoryIndex) = New Category(NameTextBox.Text, SetDefaultCheckBox.Checked)
-                Case Mode.ModifyDefault
+                Case CategoryConfigMode.ModifyDefault
                     Categories(SelectedCategoryIndex) = New Category(NameTextBox.Text, Not SetDefaultCheckBox.Checked)
             End Select
 

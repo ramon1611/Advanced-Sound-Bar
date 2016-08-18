@@ -1,7 +1,8 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class LoginForm
     Public Method As LoginMethod
+    Public Access As AccessType
 
     Private falsePasswordMessage As String = "Das eingegebene Passwort ist falsch!"
     Private emptyPasswordMessage As String = "Bitte geben Sie ein Passwort ein"
@@ -15,6 +16,7 @@ Public Class LoginForm
 
     Private Sub LoginForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            UserTextBox.Clear()
             PasswordTextBox.Clear()
             PasswordTextBox.Select()
             ErrorLabel.Hide()

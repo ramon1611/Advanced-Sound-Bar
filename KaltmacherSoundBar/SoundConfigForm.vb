@@ -1,18 +1,13 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class SoundConfigForm
     Public SoundName As String = String.Empty
     Public ToolTipCtl As New ToolTip
-    Public ActionMode As Mode = Mode.Add
-    Public SelectedSoundIndex As Integer = 0
+    Public ActionMode As SoundConfigMode = SoundConfigMode.Add
+    Public SelectedSound As Sound
 
     Private OFD As New OpenFileDialog
     Private Categories As List(Of Category) = LoadCategories(Application.StartupPath + My.Settings.CategoriesXmlPath)
-
-    Public Enum Mode As Integer
-        Add = 0
-        Modify = 1
-    End Enum
 
     Private Sub AddSound_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Try
@@ -47,7 +42,7 @@ Public Class SoundConfigForm
             Next
 
             Select Case ActionMode
-                Case Mode.Add
+                Case SoundConfigMode.Add
                     Me.Text = "Sound importieren"
                     ApplyButton.Text = "Importieren"
 
@@ -66,19 +61,19 @@ Public Class SoundConfigForm
                         End If
                     Next
 
-                Case Mode.Modify
+                Case SoundConfigMode.Modify
                     Me.Text = "Sound bearbeiten"
                     ApplyButton.Text = "Übernehmen"
 
-                    NameTextBox.Text = Sounds(SelectedSoundIndex).Name
-                    PathTextBox.Text = Sounds(SelectedSoundIndex).Path
-                    DurationTextBox.Text = Sounds(SelectedSoundIndex).Duration
+                    NameTextBox.Text = SelectedSound.Name
+                    PathTextBox.Text = SelectedSound.Path
+                    DurationTextBox.Text = SelectedSound.Duration
 
                     For Each cItem As Category In Categories
                         If CategoryComboBox.Items.Contains(cItem.Name) = False Then
                             CategoryComboBox.Items.Add(cItem.Name)
 
-                            Dim index As Integer = CategoryComboBox.FindString(Sounds(SelectedSoundIndex).Category)
+                            Dim index As Integer = CategoryComboBox.FindString(SelectedSound.Category)
                             CategoryComboBox.SelectedIndex = index
                         End If
                     Next
@@ -141,12 +136,12 @@ Public Class SoundConfigForm
             ImportSound.newFile = newPath
             ImportSound.ShowDialog()
 
-            If ImportSound.iStatus = ImportSound.ImportStatus.Success Or ImportSound.iStatus = ImportSound.ImportStatus.SuccessWithFailure Then
+            If ImportSound.iStatus = ImportStatus.Success Or ImportSound.iStatus = ImportStatus.SuccessWithFailure Then
                 Select Case ActionMode
-                    Case Mode.Add
-                        Sounds.Add(New Sound(NameTextBox.Text, newPath, DurationTextBox.Text, CategoryComboBox.Text))
-                    Case Mode.Modify
-                        Sounds(SelectedSoundIndex) = New Sound(NameTextBox.Text, newPath, DurationTextBox.Text, CategoryComboBox.Text)
+                    Case SoundConfigMode.Add
+                        Sounds.Add(New Sound(Sounds.Count, NameTextBox.Text, newPath, DurationTextBox.Text, CategoryComboBox.Text))
+                    Case SoundConfigMode.Modify
+                        Sounds(SelectedSound.GetIndex) = New Sound(Sounds.Count, NameTextBox.Text, newPath, DurationTextBox.Text, CategoryComboBox.Text)
                     Case Else
                 End Select
 

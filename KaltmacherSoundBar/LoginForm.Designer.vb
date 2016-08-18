@@ -37,6 +37,8 @@ Partial Class LoginForm
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.ChangePasswordButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.UserTextBox = New System.Windows.Forms.TextBox()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -119,6 +121,24 @@ Partial Class LoginForm
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "7668"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(133, 28)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Benutzer:"
+        Me.Label2.Visible = False
+        '
+        'UserTextBox
+        '
+        Me.UserTextBox.Location = New System.Drawing.Point(192, 25)
+        Me.UserTextBox.Name = "UserTextBox"
+        Me.UserTextBox.Size = New System.Drawing.Size(267, 20)
+        Me.UserTextBox.TabIndex = 10
+        Me.UserTextBox.Visible = False
+        '
         'LoginForm
         '
         Me.AcceptButton = Me.OkButton
@@ -126,6 +146,8 @@ Partial Class LoginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.CloseButton
         Me.ClientSize = New System.Drawing.Size(471, 127)
+        Me.Controls.Add(Me.UserTextBox)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ChangePasswordButton)
         Me.Controls.Add(Me.ErrorLabel)
@@ -150,5 +172,7 @@ Partial Class LoginForm
     Friend WithEvents ErrorLabel As System.Windows.Forms.Label
     Friend WithEvents ChangePasswordButton As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents UserTextBox As System.Windows.Forms.TextBox
 
 End Class

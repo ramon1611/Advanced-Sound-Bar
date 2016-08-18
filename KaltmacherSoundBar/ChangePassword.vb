@@ -1,4 +1,4 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class ChangePassword
     '' <?34573r_366

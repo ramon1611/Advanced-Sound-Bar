@@ -1,4 +1,4 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class CategoryInterface
 
@@ -29,7 +29,7 @@ Public Class CategoryInterface
 
     Private Sub AddCategoryButton_Click(sender As System.Object, e As System.EventArgs) Handles AddCategoryButton.Click
         Try
-            CategoryConfigForm.ActionMode = CategoryConfigForm.Mode.Add
+            CategoryConfigForm.ActionMode = CategoryConfigMode.Add
             CategoryConfigForm.ShowDialog()
         Catch ex As Exception
             ThrowExceptionMessageBox(ex)
@@ -40,10 +40,10 @@ Public Class CategoryInterface
         Try
             If CategoriesListBox.SelectedIndex >= 0 Then
                 If Categories(CategoriesListBox.SelectedIndex).IsDefault = True Then
-                    CategoryConfigForm.ActionMode = CategoryConfigForm.Mode.ModifyDefault
+                    CategoryConfigForm.ActionMode = CategoryConfigMode.ModifyDefault
                     CategoryConfigForm.ShowDialog()
                 Else
-                    CategoryConfigForm.ActionMode = CategoryConfigForm.Mode.Modify
+                    CategoryConfigForm.ActionMode = CategoryConfigMode.Modify
                     CategoryConfigForm.ShowDialog()
                 End If
             End If

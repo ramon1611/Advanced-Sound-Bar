@@ -1,4 +1,4 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class AdminInterface
     Public StatusObj As ToolStripStatusLabel = StatusToolStripLabel
@@ -88,7 +88,7 @@ Public Class AdminInterface
 
     Private Sub AddButton_Click(sender As System.Object, e As System.EventArgs) Handles AddButton.Click
         Try
-            SoundConfigForm.ActionMode = SoundConfigForm.Mode.Add
+            SoundConfigForm.ActionMode = SoundConfigMode.Add
             SoundConfigForm.ShowDialog()
         Catch ex As Exception
             ThrowExceptionMessageBox(ex)
@@ -97,12 +97,14 @@ Public Class AdminInterface
 
     Private Sub ConfigureButton_Click(sender As System.Object, e As System.EventArgs) Handles ConfigureButton.Click
         Try
-            For Each selectedIndex As Integer In SoundsListView.SelectedIndices
-                If selectedIndex >= 0 Then
-                    SoundConfigForm.ActionMode = SoundConfigForm.Mode.Modify
-                    SoundConfigForm.SelectedSoundIndex = selectedIndex
-                    SoundConfigForm.ShowDialog()
-                End If
+            For Each selectedItem As ListViewItem In SoundsListView.SelectedItems
+                For Each sound As Sound In Sounds
+                    If selectedItem.Text = sound.Name Then
+                        SoundConfigForm.ActionMode = SoundConfigMode.Modify
+                        SoundConfigForm.SelectedSound = sound
+                        SoundConfigForm.ShowDialog()
+                    End If
+                Next
             Next
         Catch ex As Exception
             ThrowExceptionMessageBox(ex)
@@ -134,7 +136,11 @@ Public Class AdminInterface
     End Sub
 
     Private Sub ViewCategoriesButton_Click(sender As System.Object, e As System.EventArgs) Handles ViewCategoriesButton.Click
-        CategoryInterface.ShowDialog()
+        Try
+            CategoryInterface.ShowDialog()
+        Catch ex As Exception
+            ThrowExceptionMessageBox(ex)
+        End Try
     End Sub
 
     Public Sub refreshSoundsListView()
@@ -142,7 +148,7 @@ Public Class AdminInterface
         SoundsListView.Items.Clear()
 
         Dim Groups As New Dictionary(Of String, ListViewGroup)
-        For Each cItem As Functions.Category In Categories
+        For Each cItem As Category In Categories
             Groups.Add(cItem.Name, New ListViewGroup(cItem.Name, cItem.Name))
             SoundsListView.Groups.Add(Groups(cItem.Name))
         Next
@@ -153,7 +159,7 @@ Public Class AdminInterface
             With newListViewItem
                 .Text = sound.Name
                 If Groups.Keys.Contains(sound.Category) Then : .Group = Groups(sound.Category) : Else
-                    .Group = New ListViewGroup("Unkategoriesiert") : End If
+                    .Group = New ListViewGroup("Unkategorisiert") : End If
                 .SubItems.Add(sound.Duration)
                 .SubItems.Add(relPath)
             End With
@@ -161,7 +167,7 @@ Public Class AdminInterface
         Next
     End Sub
 
-    Private Sub SoundsListView_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
+    Private Sub SoundsListView_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles SoundsListView.SelectedIndexChanged
         Dim selectedItems As New ListView.SelectedListViewItemCollection(SoundsListView)
         selectedItems = SoundsListView.SelectedItems
 

@@ -39,10 +39,9 @@ Partial Class UserInterface
         Me.PauseButton = New System.Windows.Forms.Button()
         Me.PlayButton = New System.Windows.Forms.Button()
         Me.SoundsListView = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.NameColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.DurationColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.SoundPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LockedPanel.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -195,7 +194,7 @@ Partial Class UserInterface
         '
         'SoundsListView
         '
-        Me.SoundsListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.SoundsListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.NameColumn, Me.DurationColumn, Me.PathColumn})
         Me.SoundsListView.FullRowSelect = True
         Me.SoundsListView.Location = New System.Drawing.Point(12, 104)
         Me.SoundsListView.Name = "SoundsListView"
@@ -204,25 +203,20 @@ Partial Class UserInterface
         Me.SoundsListView.UseCompatibleStateImageBehavior = False
         Me.SoundsListView.View = System.Windows.Forms.View.Details
         '
-        'ColumnHeader1
+        'NameColumn
         '
-        Me.ColumnHeader1.Text = "Name"
-        Me.ColumnHeader1.Width = 80
+        Me.NameColumn.Text = "Name"
+        Me.NameColumn.Width = 80
         '
-        'ColumnHeader2
+        'DurationColumn
         '
-        Me.ColumnHeader2.Text = "Path"
-        Me.ColumnHeader2.Width = 174
+        Me.DurationColumn.Text = "Duration"
+        Me.DurationColumn.Width = 52
         '
-        'ColumnHeader3
+        'PathColumn
         '
-        Me.ColumnHeader3.Text = "Duration"
-        Me.ColumnHeader3.Width = 52
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Group"
-        Me.ColumnHeader4.Width = 100
+        Me.PathColumn.Text = "Path"
+        Me.PathColumn.Width = 274
         '
         'UserInterface
         '
@@ -273,9 +267,8 @@ Partial Class UserInterface
     Friend WithEvents StatusToolStripLabel As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents SoundPlayer As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents SoundsListView As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents NameColumn As System.Windows.Forms.ColumnHeader
+    Friend WithEvents PathColumn As System.Windows.Forms.ColumnHeader
+    Friend WithEvents DurationColumn As System.Windows.Forms.ColumnHeader
 
 End Class

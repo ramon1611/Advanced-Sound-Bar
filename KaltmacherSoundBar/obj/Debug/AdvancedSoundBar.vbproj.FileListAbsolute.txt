@@ -16,7 +16,10 @@ C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\Kalt
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\Interop.WMPLib.dll
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.vbproj.ResolveComReference.cache
+C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.SoundConfigForm.resources
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.AdminInterface.resources
+C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.CategoryConfigForm.resources
+C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.CategoryInterface.resources
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.ChangePassword.resources
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.ImportSound.resources
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.LoginForm.resources
@@ -26,6 +29,3 @@ C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\Kalt
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\Advanced Sound Bar.exe
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\Advanced Sound Bar.xml
 C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\Advanced Sound Bar.pdb
-C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.CategoryConfigForm.resources
-C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.CategoryInterface.resources
-C:\Users\ramon1611\Documents\Visual Studio 2010\Projects\KaltmacherSoundBar\KaltmacherSoundBar\obj\Debug\AdvancedSoundBar.SoundConfigForm.resources

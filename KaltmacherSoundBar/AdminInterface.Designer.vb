@@ -38,10 +38,10 @@ Partial Class AdminInterface
         Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.AdminCredentialCheckBox = New System.Windows.Forms.CheckBox()
         Me.AdminCredentialGroupBox = New System.Windows.Forms.GroupBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.SoundMediaPlayer = New AxWMPLib.AxWindowsMediaPlayer()
         Me.SaveButton = New System.Windows.Forms.Button()
         Me.ViewCategoriesButton = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.RemoveButton = New System.Windows.Forms.Button()
         Me.ConfigureButton = New System.Windows.Forms.Button()
@@ -49,8 +49,8 @@ Partial Class AdminInterface
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         Me.AdminCredentialGroupBox.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -192,16 +192,6 @@ Partial Class AdminInterface
         Me.AdminCredentialGroupBox.TabIndex = 2
         Me.AdminCredentialGroupBox.TabStop = False
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.AdvancedSoundBar.My.Resources.Resources.keychain_access_128x128
-        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(244, 61)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 8
-        Me.PictureBox2.TabStop = False
-        '
         'SoundMediaPlayer
         '
         Me.SoundMediaPlayer.Enabled = True
@@ -225,14 +215,24 @@ Partial Class AdminInterface
         '
         'ViewCategoriesButton
         '
-        Me.ViewCategoriesButton.AccessibleDescription = "Zeige Kategorien"
-        Me.ViewCategoriesButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_binoculars
+        Me.ViewCategoriesButton.AccessibleDescription = "Bearbeite Kategorien"
+        Me.ViewCategoriesButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_gear
         Me.ViewCategoriesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ViewCategoriesButton.Location = New System.Drawing.Point(198, 273)
         Me.ViewCategoriesButton.Name = "ViewCategoriesButton"
         Me.ViewCategoriesButton.Size = New System.Drawing.Size(48, 48)
         Me.ViewCategoriesButton.TabIndex = 15
         Me.ViewCategoriesButton.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.AdvancedSoundBar.My.Resources.Resources.keychain_access_128x128
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(244, 61)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 8
+        Me.PictureBox2.TabStop = False
         '
         'CloseButton
         '
@@ -323,8 +323,8 @@ Partial Class AdminInterface
         Me.StatusStrip1.PerformLayout()
         Me.AdminCredentialGroupBox.ResumeLayout(False)
         Me.AdminCredentialGroupBox.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

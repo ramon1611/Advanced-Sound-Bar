@@ -1,16 +1,9 @@
-﻿Imports AdvancedSoundBar.Functions
+﻿Imports AdvancedSoundBar.Functions, AdvancedSoundBar.Enumerations
 
 Public Class ImportSound
     Public oldFile As String = String.Empty
     Public newFile As String = String.Empty
     Public iStatus As ImportStatus = ImportStatus.None
-
-    Public Enum ImportStatus As Integer
-        None = 0
-        Success = 1
-        SuccessWithFailure = 2
-        Failure = 3
-    End Enum
 
     Private Sub ImportSound_Shown(sender As Object, e As System.EventArgs) Handles Me.Shown
         Try
@@ -75,4 +68,8 @@ Public Class ImportSound
             Return ImportStatus.Failure
         End Try
     End Function
+
+    Private Sub ImportSound_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

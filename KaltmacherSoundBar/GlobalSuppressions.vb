@@ -9,7 +9,8 @@
 ' rechten Maustaste auf die Meldung in der Fehlerliste, zeigen Sie auf 
 ' "Meldung(en) unterdrücken", und klicken Sie auf "In Projektunterdrückungsdatei".
 ' Sie müssen dieser Datei nicht manuell Unterdrückungen hinzufügen.
-<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Objekte verwerfen, bevor Bereich verloren geht", Scope:="member", Target:="AdvancedSoundBar.ImportSound.#Import(System.String,System.String)")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Objekte verwerfen, bevor Bereich verloren geht", Scope:="member", Target:="AdvancedSoundBar.Functions.#MD5StringHash(System.String,AdvancedSoundBar.Enumerations+LetterCase)")> 
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Objekte verwerfen, bevor Bereich verloren geht", Scope:="member", Target:="AdvancedSoundBar.ImportSound.#Import(System.String,System.String)")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Scope:="member", Target:="AdvancedSoundBar.AdminInterface.#InitializeComponent()")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Objekte verwerfen, bevor Bereich verloren geht", Scope:="member", Target:="AdvancedSoundBar.Functions.#CategoriesXMLReader(System.String)")> 
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Objekte verwerfen, bevor Bereich verloren geht", Scope:="member", Target:="AdvancedSoundBar.Functions.#CategoriesXMLWriter(System.String,System.Collections.Generic.List`1<AdvancedSoundBar.Functions+Category>)")> 

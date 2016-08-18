@@ -121,8 +121,11 @@
   <data name="system_log_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\system_log_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inventory_category_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inventory_category_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventory_category_binoculars" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inventory_category_binoculars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="system_lock_screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\system_lock_screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,17 +139,23 @@
   <data name="media_playback_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\media_playback_start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="list_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\list_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gerard_butler_admin_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\300-gerard-butler_admin_256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="keychain_access_128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\keychain_access_128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventory_category_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inventory_category_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="media_playback_pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\media_playback_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gerard_butler_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\300-gerard-butler_256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keychain_access_128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keychain_access_128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="configure" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\configure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,19 +166,13 @@
   <data name="list_remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\list_remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inventory_category_pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inventory_category_pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="media_playback_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\media_playback_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="list_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\list_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventory_category_pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inventory_category_pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settings_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inventory_category_binoculars" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inventory_category_binoculars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventory_category_gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inventory_category_gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

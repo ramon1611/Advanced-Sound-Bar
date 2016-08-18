@@ -1,5 +1,5 @@
-﻿Imports System.Security.Cryptography, System.Text
-Imports System.Xml
+﻿Imports System.Security.Cryptography, System.Text, System.Xml
+Imports AdvancedSoundBar.Enumerations
 
 Public Class Functions
     Public Shared SoundsAbsPath As String = Application.StartupPath + My.Settings.SoundsPath
@@ -7,37 +7,25 @@ Public Class Functions
     Public Shared Categories As New List(Of Category)
     Public Shared CategoriesDefaultIsSet As Boolean
 
-    Public Enum LoginMethod As Integer
-        User = 0
-        Admin = 1
-        Unlock = 2
-    End Enum
-
-    Public Enum StatusType As Integer
-        Normal = 0
-        Failure = 1
-        Success = 2
-        Warning = 3
-    End Enum
-
-    Public Enum LetterCase As Integer
-        UpperCase = 0
-        LowerCase = 1
-        Normal = 2
-    End Enum
-
     Public Structure Sound
         Public Property Name As String
         Public Property Path As String
         Public Property Duration As String
         Public Property Category As String
 
-        Public Sub New(ByVal n As String, ByVal p As String, ByVal d As String, ByVal c As String)
+        Private Property Index As Integer
+
+        Public Sub New(ByVal i As Integer, ByVal n As String, ByVal p As String, ByVal d As String, ByVal c As String)
+            Index = i
             Name = n
             Path = p
             Duration = d
             Category = c
         End Sub
+
+        Public Function GetIndex() As Integer
+            Return Index
+        End Function
     End Structure
 
     Public Structure Category
@@ -45,11 +33,6 @@ Public Class Functions
         Public Property IsDefault As Boolean
 
         Public Sub New(ByVal n As String, Optional d As Boolean = False)
-            Name = n
-            IsDefault = d
-        End Sub
-
-        Public Sub Modify(ByVal n As String, Optional d As Boolean = False)
             Name = n
             IsDefault = d
         End Sub
@@ -74,20 +57,23 @@ Public Class Functions
     Public Shared Function LoadSounds(ByVal XmlFile As String) As List(Of Sound)
         Dim Sounds As New List(Of Sound)
 
+        Dim i As Integer = 0
         For Each sound As Sound In SoundsXMLReader(XmlFile)
-            Sounds.Add(New Sound(sound.Name, Application.StartupPath + sound.Path, sound.Duration, sound.Category))
+            Sounds.Add(New Sound(i, sound.Name, Application.StartupPath + sound.Path, sound.Duration, sound.Category))
+            i += 1
         Next
 
         Return Sounds
     End Function
 
     Public Shared Sub SaveSounds(ByVal XmlFile As String, SoundsData As List(Of Sound))
+        Dim WriteSounds As New List(Of Sound)
         For Each sound As Sound In SoundsData
             Dim fName As String = Split(sound.Path, "\").Last.ToLower
-            sound.Path = My.Settings.SoundsPath + "\" + fName
+            WriteSounds.Add(New Sound(sound.GetIndex, sound.Name, My.Settings.SoundsPath + "\" + fName, sound.Duration, sound.Category))
         Next
 
-        SoundsXMLWriter(Application.StartupPath + "\" + My.Settings.SoundsXmlPath, SoundsData)
+        SoundsXMLWriter(Application.StartupPath + "\" + My.Settings.SoundsXmlPath, WriteSounds)
     End Sub
 
     Public Shared Function LoadCategories(ByVal XmlFile As String) As List(Of Category)
@@ -232,6 +218,7 @@ Public Class Functions
 
             ' Es folgt das Auslesen der XML-Datei
             With XMLRead
+                Dim i As Integer = 0
                 Do While .Read ' Es sind noch Daten vorhanden
                     ' Welche Art von Daten liegt an?
                     Select Case .NodeType
@@ -260,7 +247,8 @@ Public Class Functions
                                 End While
 
                                 If sName <> String.Empty And sPath <> String.Empty Then
-                                    Sounds.Add(New Sound(sName, sPath, sDuration, sCategory))
+                                    Sounds.Add(New Sound(i, sName, sPath, sDuration, sCategory))
+                                    i += 1
                                 End If
                             End If
                     End Select
@@ -292,7 +280,7 @@ Public Class Functions
                         Caption, MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
-    Public Shared Sub SubmitStatus(ByVal Sender As Form, ByVal Obj As ToolStripStatusLabel, Optional ByVal StatusType As StatusType = Functions.StatusType.Normal, Optional ByVal StatusMessage As String = "Bereit")
+    Public Shared Sub SubmitStatus(ByVal Sender As Form, ByVal Obj As ToolStripStatusLabel, Optional ByVal StatusType As StatusType = StatusType.Normal, Optional ByVal StatusMessage As String = "Bereit")
         Try
             Select Case StatusType
                 Case StatusType.Failure
@@ -329,11 +317,11 @@ Public Class Functions
             Next
 
             Select Case LetterCase
-                Case Functions.LetterCase.LowerCase
+                Case LetterCase.LowerCase
                     Return Res.ToLower
-                Case Functions.LetterCase.UpperCase
+                Case LetterCase.UpperCase
                     Return Res.ToUpper
-                Case Functions.LetterCase.Normal
+                Case LetterCase.Normal
                     Return Res
                 Case Else
                     Return Res
