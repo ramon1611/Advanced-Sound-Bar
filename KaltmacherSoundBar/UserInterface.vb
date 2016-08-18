@@ -6,8 +6,6 @@ Public Class UserInterface
     Public StatusObj As ToolStripStatusLabel = StatusToolStripLabel
     Public intInputBoxCancel As Integer = StrPtr(String.Empty)
     Public ToolTipCtl As New ToolTip
-    Public Sounds As List(Of Sound) = LoadSounds(Application.StartupPath + My.Settings.SoundsXmlPath)
-    Public Categories As List(Of Category) = LoadCategories(Application.StartupPath + My.Settings.CategoriesXmlPath)
 
     '' <?34573r_366
     Public e66 As Boolean = False
@@ -22,6 +20,8 @@ Public Class UserInterface
 
     Private Sub UserInterface_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Try
+            initialize(Application.StartupPath + My.Settings.SoundsXmlPath, Application.StartupPath + My.Settings.CategoriesXmlPath)
+
             '' <?34573r_366
             LoginForm.e4573r_366.Add("bgs01", "Background Sound 01 {06:59}")
             LoginForm.e4573r_366.Add("bgs02", "Background Sound 02 {21:22}")

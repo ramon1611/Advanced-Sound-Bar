@@ -12,7 +12,7 @@ Public Class ImportSound
         Failure = 3
     End Enum
 
-    Private Sub ImportSoundvb_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub ImportSound_Shown(sender As Object, e As System.EventArgs) Handles Me.Shown
         Try
             If oldFile <> String.Empty Or newFile <> String.Empty Then
                 ImportStatusLabel.Text = oldFile + " -> " + newFile

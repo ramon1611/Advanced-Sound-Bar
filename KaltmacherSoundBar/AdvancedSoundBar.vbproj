@@ -182,10 +182,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSound.Designer.vb">
-      <DependentUpon>AddSound.vb</DependentUpon>
+    <Compile Include="SoundConfigForm.Designer.vb">
+      <DependentUpon>SoundConfigForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddSound.vb">
+    <Compile Include="SoundConfigForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminInterface.Designer.vb">
@@ -194,16 +194,22 @@
     <Compile Include="AdminInterface.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CategoryConfigForm.Designer.vb">
+      <DependentUpon>CategoryConfigForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryConfigForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryInterface.Designer.vb">
+      <DependentUpon>CategoryInterface.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryInterface.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ChangePassword.Designer.vb">
       <DependentUpon>ChangePassword.vb</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfigureSound.Designer.vb">
-      <DependentUpon>ConfigureSound.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ConfigureSound.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions.vb" />
@@ -244,17 +250,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddSound.resx">
-      <DependentUpon>AddSound.vb</DependentUpon>
+    <EmbeddedResource Include="SoundConfigForm.resx">
+      <DependentUpon>SoundConfigForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminInterface.resx">
       <DependentUpon>AdminInterface.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CategoryConfigForm.resx">
+      <DependentUpon>CategoryConfigForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryInterface.resx">
+      <DependentUpon>CategoryInterface.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigureSound.resx">
-      <DependentUpon>ConfigureSound.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportSound.resx">
       <DependentUpon>ImportSound.vb</DependentUpon>

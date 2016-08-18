@@ -34,17 +34,14 @@ Partial Class AdminInterface
         Me.StatusToolStripLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SoundsListView = New System.Windows.Forms.ListView()
         Me.NameColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.DurationColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.AdminCredentialCheckBox = New System.Windows.Forms.CheckBox()
         Me.AdminCredentialGroupBox = New System.Windows.Forms.GroupBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.SoundMediaPlayer = New AxWMPLib.AxWindowsMediaPlayer()
         Me.SaveButton = New System.Windows.Forms.Button()
         Me.ViewCategoriesButton = New System.Windows.Forms.Button()
-        Me.DeleteCategoryButton = New System.Windows.Forms.Button()
-        Me.EditCategoryButton = New System.Windows.Forms.Button()
-        Me.AddCategoryButton = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.RemoveButton = New System.Windows.Forms.Button()
         Me.ConfigureButton = New System.Windows.Forms.Button()
@@ -52,8 +49,8 @@ Partial Class AdminInterface
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         Me.AdminCredentialGroupBox.SuspendLayout()
-        CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -146,6 +143,7 @@ Partial Class AdminInterface
         Me.SoundsListView.Location = New System.Drawing.Point(12, 104)
         Me.SoundsListView.Name = "SoundsListView"
         Me.SoundsListView.Size = New System.Drawing.Size(410, 160)
+        Me.SoundsListView.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.SoundsListView.TabIndex = 13
         Me.SoundsListView.UseCompatibleStateImageBehavior = False
         Me.SoundsListView.View = System.Windows.Forms.View.Details
@@ -155,15 +153,15 @@ Partial Class AdminInterface
         Me.NameColumn.Text = "Name"
         Me.NameColumn.Width = 120
         '
-        'PathColumn
-        '
-        Me.PathColumn.Text = "Path"
-        Me.PathColumn.Width = 234
-        '
         'DurationColumn
         '
         Me.DurationColumn.Text = "Duration"
         Me.DurationColumn.Width = 52
+        '
+        'PathColumn
+        '
+        Me.PathColumn.Text = "Path"
+        Me.PathColumn.Width = 234
         '
         'AdminCredentialCheckBox
         '
@@ -194,15 +192,24 @@ Partial Class AdminInterface
         Me.AdminCredentialGroupBox.TabIndex = 2
         Me.AdminCredentialGroupBox.TabStop = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.AdvancedSoundBar.My.Resources.Resources.keychain_access_128x128
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(244, 61)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 8
+        Me.PictureBox2.TabStop = False
+        '
         'SoundMediaPlayer
         '
         Me.SoundMediaPlayer.Enabled = True
-        Me.SoundMediaPlayer.Location = New System.Drawing.Point(528, 273)
+        Me.SoundMediaPlayer.Location = New System.Drawing.Point(276, 275)
         Me.SoundMediaPlayer.Name = "SoundMediaPlayer"
         Me.SoundMediaPlayer.OcxState = CType(resources.GetObject("SoundMediaPlayer.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.SoundMediaPlayer.Size = New System.Drawing.Size(48, 48)
+        Me.SoundMediaPlayer.Size = New System.Drawing.Size(276, 46)
         Me.SoundMediaPlayer.TabIndex = 14
-        Me.SoundMediaPlayer.Visible = False
         '
         'SaveButton
         '
@@ -221,57 +228,11 @@ Partial Class AdminInterface
         Me.ViewCategoriesButton.AccessibleDescription = "Zeige Kategorien"
         Me.ViewCategoriesButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_binoculars
         Me.ViewCategoriesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ViewCategoriesButton.Location = New System.Drawing.Point(360, 273)
+        Me.ViewCategoriesButton.Location = New System.Drawing.Point(198, 273)
         Me.ViewCategoriesButton.Name = "ViewCategoriesButton"
         Me.ViewCategoriesButton.Size = New System.Drawing.Size(48, 48)
         Me.ViewCategoriesButton.TabIndex = 15
         Me.ViewCategoriesButton.UseVisualStyleBackColor = True
-        '
-        'DeleteCategoryButton
-        '
-        Me.DeleteCategoryButton.AccessibleDescription = "Kategorie entfernen"
-        Me.DeleteCategoryButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_delete
-        Me.DeleteCategoryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.DeleteCategoryButton.Location = New System.Drawing.Point(306, 273)
-        Me.DeleteCategoryButton.Name = "DeleteCategoryButton"
-        Me.DeleteCategoryButton.Size = New System.Drawing.Size(48, 48)
-        Me.DeleteCategoryButton.TabIndex = 10
-        Me.DeleteCategoryButton.Tag = ""
-        Me.DeleteCategoryButton.UseVisualStyleBackColor = True
-        '
-        'EditCategoryButton
-        '
-        Me.EditCategoryButton.AccessibleDescription = "Kategorie bearbeiten"
-        Me.EditCategoryButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_pencil
-        Me.EditCategoryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.EditCategoryButton.Location = New System.Drawing.Point(252, 273)
-        Me.EditCategoryButton.Name = "EditCategoryButton"
-        Me.EditCategoryButton.Size = New System.Drawing.Size(48, 48)
-        Me.EditCategoryButton.TabIndex = 9
-        Me.EditCategoryButton.Tag = ""
-        Me.EditCategoryButton.UseVisualStyleBackColor = True
-        '
-        'AddCategoryButton
-        '
-        Me.AddCategoryButton.AccessibleDescription = "Kategorie hinzufügen"
-        Me.AddCategoryButton.BackgroundImage = Global.AdvancedSoundBar.My.Resources.Resources.inventory_category_add
-        Me.AddCategoryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.AddCategoryButton.Location = New System.Drawing.Point(198, 273)
-        Me.AddCategoryButton.Name = "AddCategoryButton"
-        Me.AddCategoryButton.Size = New System.Drawing.Size(48, 48)
-        Me.AddCategoryButton.TabIndex = 8
-        Me.AddCategoryButton.Tag = ""
-        Me.AddCategoryButton.UseVisualStyleBackColor = True
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.AdvancedSoundBar.My.Resources.Resources.keychain_access_128x128
-        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(244, 61)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 8
-        Me.PictureBox2.TabStop = False
         '
         'CloseButton
         '
@@ -341,9 +302,6 @@ Partial Class AdminInterface
         Me.ClientSize = New System.Drawing.Size(696, 346)
         Me.Controls.Add(Me.ViewCategoriesButton)
         Me.Controls.Add(Me.SoundMediaPlayer)
-        Me.Controls.Add(Me.DeleteCategoryButton)
-        Me.Controls.Add(Me.EditCategoryButton)
-        Me.Controls.Add(Me.AddCategoryButton)
         Me.Controls.Add(Me.AdminCredentialCheckBox)
         Me.Controls.Add(Me.AdminCredentialGroupBox)
         Me.Controls.Add(Me.SoundsListView)
@@ -365,8 +323,8 @@ Partial Class AdminInterface
         Me.StatusStrip1.PerformLayout()
         Me.AdminCredentialGroupBox.ResumeLayout(False)
         Me.AdminCredentialGroupBox.PerformLayout()
-        CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SoundMediaPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -390,9 +348,6 @@ Partial Class AdminInterface
     Friend WithEvents SoundsListView As System.Windows.Forms.ListView
     Friend WithEvents AdminCredentialCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents AdminCredentialGroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents AddCategoryButton As System.Windows.Forms.Button
-    Friend WithEvents EditCategoryButton As System.Windows.Forms.Button
-    Friend WithEvents DeleteCategoryButton As System.Windows.Forms.Button
     Friend WithEvents AddButton As System.Windows.Forms.Button
     Friend WithEvents SoundMediaPlayer As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents NameColumn As System.Windows.Forms.ColumnHeader

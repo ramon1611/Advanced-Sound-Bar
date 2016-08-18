@@ -3,6 +3,9 @@ Imports System.Xml
 
 Public Class Functions
     Public Shared SoundsAbsPath As String = Application.StartupPath + My.Settings.SoundsPath
+    Public Shared Sounds As New List(Of Sound)
+    Public Shared Categories As New List(Of Category)
+    Public Shared CategoriesDefaultIsSet As Boolean
 
     Public Enum LoginMethod As Integer
         User = 0
@@ -24,10 +27,10 @@ Public Class Functions
     End Enum
 
     Public Structure Sound
-        Public Name As String
-        Public Path As String
-        Public Duration As String
-        Public Category As String
+        Public Property Name As String
+        Public Property Path As String
+        Public Property Duration As String
+        Public Property Category As String
 
         Public Sub New(ByVal n As String, ByVal p As String, ByVal d As String, ByVal c As String)
             Name = n
@@ -38,22 +41,62 @@ Public Class Functions
     End Structure
 
     Public Structure Category
-        Public Name As String
-        Public IsDefault As Boolean
+        Public Property Name As String
+        Public Property IsDefault As Boolean
 
         Public Sub New(ByVal n As String, Optional d As Boolean = False)
             Name = n
             IsDefault = d
         End Sub
+
+        Public Sub Modify(ByVal n As String, Optional d As Boolean = False)
+            Name = n
+            IsDefault = d
+        End Sub
     End Structure
 
+    Public Shared Sub initialize(ByVal SoundsXmlFile As String, ByVal CategoriesXmlFile As String)
+        Sounds = LoadSounds(SoundsXmlFile)
+        Categories = LoadCategories(CategoriesXmlFile)
+
+        For Each category As Category In Categories
+            If category.IsDefault = True Then : CategoriesDefaultIsSet = True : End If
+        Next
+    End Sub
+
+    Public Shared Sub refreshDefaultIsSet()
+        CategoriesDefaultIsSet = False
+        For Each category As Category In Categories
+            If category.IsDefault = True Then : CategoriesDefaultIsSet = True : End If
+        Next
+    End Sub
+
     Public Shared Function LoadSounds(ByVal XmlFile As String) As List(Of Sound)
-        Return SoundsXMLReader(XmlFile)
+        Dim Sounds As New List(Of Sound)
+
+        For Each sound As Sound In SoundsXMLReader(XmlFile)
+            Sounds.Add(New Sound(sound.Name, Application.StartupPath + sound.Path, sound.Duration, sound.Category))
+        Next
+
+        Return Sounds
     End Function
+
+    Public Shared Sub SaveSounds(ByVal XmlFile As String, SoundsData As List(Of Sound))
+        For Each sound As Sound In SoundsData
+            Dim fName As String = Split(sound.Path, "\").Last.ToLower
+            sound.Path = My.Settings.SoundsPath + "\" + fName
+        Next
+
+        SoundsXMLWriter(Application.StartupPath + "\" + My.Settings.SoundsXmlPath, SoundsData)
+    End Sub
 
     Public Shared Function LoadCategories(ByVal XmlFile As String) As List(Of Category)
         Return CategoriesXMLReader(XmlFile)
     End Function
+
+    Public Shared Sub SaveCategories(ByVal XmlFile As String, ByVal CategoriesData As List(Of Category))
+        CategoriesXMLWriter(Application.StartupPath + "\" + My.Settings.CategoriesXmlPath, CategoriesData)
+    End Sub
 
     Public Shared Sub CategoriesXMLWriter(ByVal XmlFile As String, ByVal CategoriesData As List(Of Category))
         Try
@@ -197,7 +240,7 @@ Public Class Functions
                             Dim sName As String = String.Empty
                             Dim sPath As String = String.Empty
                             Dim sDuration As String = String.Empty
-                            Dim sGroup As String = String.Empty
+                            Dim sCategory As String = String.Empty
 
                             ' Alle Attribute (Name-Wert-Paare) abarbeiten
                             If .AttributeCount > 0 Then
@@ -210,14 +253,14 @@ Public Class Functions
                                             sPath = .Value
                                         Case "Duration"
                                             sDuration = .Value
-                                        Case "Group"
-                                            sGroup = .Value
+                                        Case "Category"
+                                            sCategory = .Value
                                         Case Else
                                     End Select
                                 End While
 
                                 If sName <> String.Empty And sPath <> String.Empty Then
-                                    Sounds.Add(New Sound(sName, sPath, sDuration, sGroup))
+                                    Sounds.Add(New Sound(sName, sPath, sDuration, sCategory))
                                 End If
                             End If
                     End Select
